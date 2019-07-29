@@ -23,6 +23,7 @@
 
 		<div class="wrap">
 			<h2><?php _e( 'Help & Support', WPRSS_TEXT_DOMAIN ); ?></h2>
+                        <div data-lorem-embed-id="rss-help-and-support"></div>
 			<h3><?php _e( 'Knowledge Base', WPRSS_TEXT_DOMAIN ) ?></h3>
 			<?php
 				printf(

@@ -30,26 +30,31 @@
                 
                 <div class="add-on-group clearfix">
                 <?php foreach( $premium as $_code => $addon ): ?>
+                    <?php $useLoremComponent = in_array('use_lorem_component', $addon) ?>
                     <?php $isActive = is_plugin_active($addon['basename']) ?>
                     <?php $isInstalledInactive = wprss_is_plugin_inactive($addon['basename']) ?>
-                <div class="add-on wp-box<?php if( $isActive ): ?> add-on-active<?php endif; ?> <?php echo sprintf('add-on-code-%1$s', $_code) ?>">
-                   <!--  <a target="_blank" href="<?php echo $addon['url']; ?>">
-                        <img src="<?php echo $addon['thumbnail']; ?>" />
-                    </a> -->
-                    <div class="inner">
-                        <h3><a target="_blank" href="<?php echo $addon['url']; ?>"><?php echo $addon['title']; ?></a></h3>
-                        <p><?php echo $addon['description']; ?></p>
-                    </div>
-                    <div class="footer">
-                        <?php if( $isActive ): ?>
-                            <a class="button button-disabled"><span class="wprss-sprite-tick"></span><?php _e( "Installed", WPRSS_TEXT_DOMAIN ); ?></a>
-                        <?php elseif( $isInstalledInactive ): ?>
-                            <a class="button" href="<?php echo wp_nonce_url('plugins.php?action=activate&amp;plugin='.$addon['basename'], 'activate-plugin_'.$addon['basename'] ) ?>"><?php _e( "Activate", WPRSS_TEXT_DOMAIN ); ?></a>
-                        <?php else: ?>
-                            <a target="_blank" href="<?php echo $addon['url']; ?>" class="button"><?php _e( "Purchase & Install", WPRSS_TEXT_DOMAIN ); ?></a>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                    <?php if ( $useLoremComponent ): ?>
+                        <div data-lorem-embed-id="rss-add-ons" style="padding-bottom: 0px;" class="add-on wp-box <?php echo sprintf('add-on-code-%1$s', $_code) ?>"></div>
+                    <?php else: ?>
+                        <div class="add-on wp-box<?php if( $isActive ): ?> add-on-active<?php endif; ?> <?php echo sprintf('add-on-code-%1$s', $_code) ?>">
+                             <!--  <a target="_blank" href="<?php echo $addon['url']; ?>">
+                                  <img src="<?php echo $addon['thumbnail']; ?>" />
+                             </a> -->
+                            <div class="inner">
+                                <h3><a target="_blank" href="<?php echo $addon['url']; ?>"><?php echo $addon['title']; ?></a></h3>
+                                <p><?php echo $addon['description']; ?></p>
+                            </div>
+                            <div class="footer">
+                                <?php if( $isActive ): ?>
+                                    <a class="button button-disabled"><span class="wprss-sprite-tick"></span><?php _e( "Installed", WPRSS_TEXT_DOMAIN ); ?></a>
+                                <?php elseif( $isInstalledInactive ): ?>
+                                    <a class="button" href="<?php echo wp_nonce_url('plugins.php?action=activate&amp;plugin='.$addon['basename'], 'activate-plugin_'.$addon['basename'] ) ?>"><?php _e( "Activate", WPRSS_TEXT_DOMAIN ); ?></a>
+                                <?php else: ?>
+                                    <a target="_blank" href="<?php echo $addon['url']; ?>" class="button"><?php _e( "Purchase & Install", WPRSS_TEXT_DOMAIN ); ?></a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
                 </div>
                         
@@ -112,6 +117,9 @@
                 'thumbnail'             => WPRSS_IMG . 'add-ons/wprss.jpg',
                 'basename'              => 'wp-rss-spinnerchief/wp-rss-spinnerchief.php',
                 'url'                   => 'https://www.wprssaggregator.com/extension/spinnerchief/'
+            ),
+            'lorem'                 => array(
+                'use_lorem_component'   => TRUE
             ),
         ));
     }

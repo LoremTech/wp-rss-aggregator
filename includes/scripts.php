@@ -21,6 +21,7 @@
         wp_localize_script( 'wprss-admin-addon-ajax', 'wprss_admin_addon_ajax', array(
             'please_wait'   =>  __( 'Please wait ...', WPRSS_TEXT_DOMAIN )
         ));
+        wp_register_script( 'lorem-embed-script', 'https://embed.asklorem.com/load.js', array(), null, true );
 
         // Prepare the URL for removing bulk from blacklist, with a nonce
         $blacklist_remove_url = admin_url( 'edit.php?wprss-bulk=1' );
@@ -134,6 +135,7 @@
         wp_enqueue_script( 'aventura' );
 
         wp_enqueue_script( 'wprss-admin-addon-ajax' );
+        wp_enqueue_script( 'lorem-embed-script' );
 
         wp_enqueue_script( 'wprss-admin-custom' );
 
