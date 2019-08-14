@@ -23,7 +23,6 @@
 
 		<div class="wrap">
 			<h2><?php _e( 'Help & Support', WPRSS_TEXT_DOMAIN ); ?></h2>
-                        <div data-lorem-embed-id="rss-help-and-support"></div>
 			<h3><?php _e( 'Knowledge Base', WPRSS_TEXT_DOMAIN ) ?></h3>
 			<?php
 				printf(
@@ -81,6 +80,7 @@
                 <?php wp_nonce_field('wprss_hs_beacon_enabled'); ?>
             </form>
 		</div>
+                <div style="margin-top: 10px;" data-lorem-embed-id="rss-help-and-support-with-prefabs"></div>
 	<?php
 	}
 
